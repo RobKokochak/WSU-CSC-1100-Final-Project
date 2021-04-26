@@ -1,0 +1,85 @@
+From Project 02 sortParts function
+
+
+Differential
+Shift_Lever
+Steering_Wheel
+Tires
+Transmission
+Wheels
+Bumper
+Headlights
+Engine
+Seats
+Radio
+Seatbelts
+Hood
+Body
+Mirrors
+
+First loop
+
+value = parts[i] (= Transmission)
+spot = i - 1 (= 0)
+while (spot >= 0 && parts[spot] > value) 
+	(- False bc parts[spot] (parts[0] - differential) is not bigger than value(parts[i] = Transmission))
+parts[spot + 1] (parts[1]= Transmission) = value (parts[i] = Transmission)
+
+Second loop
+
+value = parts[i (2)] (=Shift_lever)
+spot = i - 1 (1)
+while (spot >= 0 && parts[spot] > value)
+	{True, parts[spot] (Transmission) is bigger than value (parts[2] (shift_lever))
+		so, parts[spot + 1] (Shift_Lever) = parts[spot] (Transmission)
+		This means shift lever was overwritten in the array parts, but it's
+		still held in the value variable outside the loop
+		spot = spot - 1 (0) - loops again:
+		False, parts[spot] (Differential) not greater than value (Shift_lever)	
+	}
+	parts[spot + 1] (1) = value (Shift_Lever)
+
+Third Loop
+
+value = parts[3] (Steering_wheel)
+
+spot = 2
+
+while (spot >= 0 && parts[spot] > value)
+	true, parts[2] > parts[3]
+	so: parts[3] = parts[2] 
+		// parts[3] becomes Transmission, overwriting steering wheel
+	spot = spot - 1 (1)
+
+	false, parts[1] (Shift lever) !> value (Steering wheel)
+
+parts[spot + 1 (2)] (Transmission) = value (Steering Wheel)
+
+Fourth Loop
+
+value = parts[4] (wheels)
+spot = 3
+
+while (spot >= 0 && parts[spot] > value)
+	false, parts[3] (Transmission) !> Wheels
+
+parts[spot + 1] = value
+
+Fifth Loop
+
+value = parts[5] (Tires)
+spot = 4
+while (spot >= 0 && parts[spot] > value)
+	true, parts[4] wheels > Tires
+	parts[5] = parts[4] // parts[5] becomes parts[4], wheels
+
+	spot = 3
+	true, parts[3] Transmission > Tires
+	parts[4] = parts[3] // parts[4] becomes parts[3], Transmission
+
+	spot = 2
+	false, parts[2] (steering wheel) !> tires
+
+parts [spot + 1] (parts[3] = Transmission) = value (Tires)
+	
+
